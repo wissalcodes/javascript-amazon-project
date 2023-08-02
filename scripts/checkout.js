@@ -1,5 +1,5 @@
 import {cart,removeProductById} from '../data/cart.js';
-import { products, getProductById} from '../data/products.js';
+import {getProductById} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
 const checkoutElement = document.querySelector('.js-order-summary');
@@ -88,13 +88,12 @@ const checkoutElement = document.querySelector('.js-order-summary');
   `
   gridHTML+=html;
   });
-  checkoutElement.innerHTML = gridHTML;
+  checkoutElement.innerHTML += gridHTML;
   document.querySelectorAll('.js-delete-link').forEach((link)=>{
     link.addEventListener('click',()=>{
       const productId = link.dataset.productId;
       removeProductById(productId);
       document.querySelector(`.js-cart-item-container-${productId}`).remove();
-      
     })
   });
 
